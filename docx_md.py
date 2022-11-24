@@ -6,7 +6,7 @@ import os
 def docx_md(docx_path):
     for docx_abs_path in glob.glob(docx_path + r'\**\*.docx', recursive=True):
         # 切换工作目录
-        os.chdir(os.path.dirname(docx_path))
+        os.chdir(os.path.dirname(docx_abs_path))
         # 图片名
         pic_dir_name = os.path.basename(docx_abs_path).replace(".docx", "")
         # md文件名
@@ -20,7 +20,7 @@ def docx_md(docx_path):
 def md_docx(md_path):
     for md_abs_path in glob.glob(md_path + r'\**\*.md', recursive=True):
         # 切换工作目录
-        os.chdir(os.path.dirname(md_path))
+        os.chdir(os.path.dirname(md_abs_path))
         # docx文件名
         docx_abs_path = md_abs_path.replace(".md", ".docx")
         cmd_str = "pandoc -s " + md_abs_path + " -o " + docx_abs_path
@@ -32,7 +32,7 @@ def md_docx(md_path):
 def html_md(html_path):
     for md_abs_path in glob.glob(html_path + r'\**\*.md', recursive=True):
         # 切换工作目录
-        os.chdir(os.path.dirname(html_path))
+        os.chdir(os.path.dirname(md_abs_path))
         # docx文件名
         md_abs_path = md_abs_path.replace(".html", ".md")
         cmd_str = "pandoc -f html-native_divs-native_spans -i " + html_path + " -t markdown -o " + md_abs_path
