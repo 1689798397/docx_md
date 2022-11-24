@@ -11,7 +11,7 @@ def docx_md(docx_path):
         pic_dir_name = os.path.basename(docx_abs_path).replace(".docx", "")
         # md文件名
         md_abs_path = docx_abs_path.replace(".docx", ".md")
-        cmd_str = "pandoc --extract-media " + pic_dir_name + " -s " + docx_path + " -o " + md_abs_path
+        cmd_str = "pandoc --extract-media " + pic_dir_name + " -s " + docx_abs_path + " -o " + md_abs_path
         print(cmd_str)
         os.system(cmd_str)
 
